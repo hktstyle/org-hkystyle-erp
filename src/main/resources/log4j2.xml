@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="MyApp"
+               monitorInterval="3">
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-4r [%t] %-5p %id %c %x - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!-- 日志记录级别 -->
+        <!--<Logger name="com.alibaba.dubbo.monitor.dubbo.DubboMonitor" level="info" additivity="false"/>-->
+        <Root level="info">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>

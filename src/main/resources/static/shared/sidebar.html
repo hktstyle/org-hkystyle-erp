@@ -1,0 +1,24 @@
+<div class="page-sidebar navbar-collapse collapse">
+	<ul class="page-sidebar-menu" data-keep-expanded="false"
+		data-auto-scroll="true" data-slide-speed="200"
+		ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+		<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+		<li class="sidebar-toggler-wrapper">
+			<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+			<div class="sidebar-toggler"></div> <!-- END SIDEBAR TOGGLER BUTTON -->
+		</li>
+		<li>&nbsp;</li>
+
+		<!--start 使用自定义指令实现内部递归 -->
+		<li ng-class="{'start':($index==0)}"  ng-repeat="item in sidebarList"  >
+			<a href="{{item.url}}">
+				<i class="{{item.icon}}"></i>
+				<span class="title" ng-bind="item.privilegeName"></span>
+				<span class="selected" ng-if="$index==0"></span><span ng-if="item.sonIndex.length" ng-class="{'arrow':(item.sonIndex!=null)}"></span>
+			</a>
+			<trees sonlabel="item.sonIndex" ng-if="item.sonIndex.length"></trees>
+		</li>
+		<!-- end 使用自定义指令实现内部递归 -->
+	</ul>
+	<!-- END SIDEBAR MENU -->
+</div>

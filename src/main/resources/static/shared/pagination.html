@@ -1,0 +1,8 @@
+<pagination boundary-links="true"
+			items-per-page="vm.pages.itemsPerPage"
+			total-items="vm.pages.totalItems"
+			ng-model="vm.pages.currentPage"
+			class="pagination-sm pull-right" previous-text="&lsaquo;"
+			next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+			ng-change="pageChanged()"></pagination>
+<h5>每页 {{vm.pages.itemsPerPage}}条 | 共 {{vm.pages.totalItems}} 条记录 | 当前第 {{vm.pages.currentPage}} 页 | 共 {{totalPage}} 页</h5>

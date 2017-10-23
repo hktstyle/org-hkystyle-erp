@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn" data-ng-app="MetronicApp">
+<head>
+    <meta charset="utf-8"/>
+    <title>燃烧吧，青春~</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="销售 ERP 平台" name="description"/>
+    <meta content="胡开阳" name="author"/>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="assets/global/plugins/font-opensans/font-opensans.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/angularjs/plugins/angular-block-ui/angular-block-ui.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="assets/global/plugins/angularjs/plugins/angular-toastr/angular-toastr.css" rel="stylesheet"
+          type="text/css"/>
+
+    <link href="assets/global/plugins/angularjs/plugins/ui-select/select.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/angularjs/plugins/ui-select/select.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/angularjs/plugins/ui-select/selectize.default.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link id="ng_load_plugins_before"/>
+    <!-- END DYMANICLY LOADED CSS FILES -->
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+    <!-- BEGIN PAGE STYLES -->
+    <!-- <link href="assets/pages/css/error.css" rel="stylesheet" type="text/css"/> -->
+    <!-- END PAGE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="assets/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+
+<body data-ng-controller="AppController">
+<!-- BEGIN PAGE SPINNER -->
+<div data-ng-spinner-bar class="page-spinner-bar">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+<!-- END PAGE SPINNER -->
+<!-- BEGIN HEADER -->
+<div data-ng-include="'shared/header.html'" data-ng-controller="HeaderController"
+     class="page-header navbar navbar-fixed-top"></div>
+<!-- END HEADER -->
+<div class="clearfix"></div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div data-ng-include="'shared/sidebar.html'" data-ng-controller="SidebarController"
+         class="page-sidebar-wrapper"></div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content" id="dataLoading">
+            <div style="height: 60px;width: 100%;"></div>
+            <!-- BEGIN ACTUAL CONTENT -->
+            <div data-ui-view class="fade-in-up"></div>
+            <!-- END ACTUAL CONTENT -->
+        </div>
+
+        <!-- <pagedata-loading></pagedata-loading> -->
+
+    </div>
+
+    <!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div data-ng-include="'shared/footer.html'" data-ng-controller="FooterController" class="page-footer">
+</div>
+
+
+<!-- END FOOTER -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="assets/global/plugins/respond.min.js"></script>
+<script src="assets/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="assets/global/plugins/underscore-1.8.3.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/ajaxfileupload.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
+        type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN CORE ANGULARJS PLUGINS -->
+<script src="assets/global/plugins/angularjs/angular.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/angular-touch.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/angular-messages.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/plugins/bindonce/bindonce.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/plugins/angular-block-ui/angular-block-ui.min.js"
+        type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/plugins/angular-breadscrumb.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/plugins/angular-toastr/angular-toastr.js"
+        type="text/javascript"></script>
+<script src="assets/global/plugins/angularjs/plugins/angular-toastr/angular-toastr.tpls.js"
+        type="text/javascript"></script>
+<!-- date -->
+<script src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+        type="text/javascript"></script>
+<script src="assets/global/plugins/select2/select2.min.js" type="text/javascript"></script>
+
+<script src="assets/global/plugins/angularjs/plugins/ui-select/select.js" type="text/javascript"></script>
+<!-- END CORE ANGULARJS PLUGINS -->
+<!-- 初始化路由配置 -->
+<script src="js/routeInit/app.js" type="text/javascript"></script>
+<script src="js/routeInit/productInit.js" type="text/javascript"></script>
+
+<!-- 初始化路由配置 -->
+<script src="js/directives/directives.js" type="text/javascript"></script>
+<script src="js/service/service.js" type="text/javascript"></script>
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="assets/layout/scripts/layout.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+    $(document).ready(function () {
+        Metronic.init();
+        Metronic.setAssetsPath('assets/');
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

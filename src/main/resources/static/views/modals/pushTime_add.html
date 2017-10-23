@@ -1,0 +1,49 @@
+<div class="modal-header" >
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">×</button>
+    <h3 class="modal-title" ng-bind="title"></h3>
+</div>
+<div class="modal-body">
+    <div class="row"  style="margin: 0px;">
+        <div class="portlet">
+            <div class="portlet-title" >
+                <div class="caption font-green-sharp">
+                    <i class="icon-settings font-green-sharp"></i> <span
+                        class="caption-subject bold uppercase">添加</span> <span
+                        class="caption-helper">输入推送时间</span>
+                </div>
+            </div>
+            <div class="portlet-body" >
+                <form action="#" id="#" class="form-horizontal searchbox">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">推送时间：</label>
+                                    <div class="col-md-8">
+                                        <input name="pBeginDate" id="pushTime"
+                                               ejp-dateformat="yyyy-MM-dd HH:mm"  class="form-control ng-pristine ng-untouched ng-valid datetime-picker" type="text" ng-model="vo.pushTime"  required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()"  >确定</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+</div>
+<script>
+    $("#pushTime").datetimepicker({
+        language:'cn',
+        rtl:Metronic.isRTL(),
+        format: "yyyy-mm-dd hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep:5,
+        pickerPosition: "bottom-left"
+    })
+</script>

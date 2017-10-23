@@ -1,0 +1,24 @@
+<div  ng-controller="ErrorController">	
+	<!-- BEGIN PAGE CONTENT-->
+    <div class="row" style="margin-top:16px;">
+        <div class="col-md-10 page-404 col-md-offset-1">
+            <div class="number" style="top: -5px;">
+                <img src="../../assets/layout/img/error.jpg">
+            </div>
+            <div class="details">
+                <h3>糟糕，页面上出现错误，无法响应。</h3>
+                <p>请几分钟后刷新页面。</p>
+                <p>
+                    <i class="fa fa-home"></i>&nbsp;&nbsp;<a href="#/index.html">返回首页</a>
+                </p>
+            </div>										
+        </div>
+   </div>
+   <div class="row" style="margin-bottom:16px;">
+        <div class="col-md-10 col-md-offset-1">
+            <h3>错误信息：</h3>
+            <div>{{ error.message }}</div>
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->					
+</div>

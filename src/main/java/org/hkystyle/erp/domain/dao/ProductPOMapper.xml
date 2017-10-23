@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="org.hkystyle.erp.domain.dao.ProductPOMapper">
+    <resultMap id="BaseResultMap" type="org.hkystyle.erp.domain.po.ProductPO">
+        <id column="'Id'" property="id" javaType="INTEGER"/>
+        <result column="Name" property="name" jdbcType="VARCHAR"/>
+        <result column="SellingUnit" property="sellingUnit" jdbcType="VARCHAR"/>
+        <result column="SpecName" property="specName" jdbcType="VARCHAR"/>
+        <result column="SellingPrice" property="sellingPrice" jdbcType="DECIMAL"/>
+        <result column="CreateTime" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="LastUpdateTime" property="lastUpdateTime" jdbcType="TIMESTAMP"/>
+        <result column="CreateUserId" property="createUserId" javaType="INTEGER"/>
+        <result column="LastUpdateUserId" property="lastUpdateUserId" javaType="INTEGER"/>
+        <result column="State" property="state" javaType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        'Id', Name, SellingUnit, SpecName, SellingPrice, CreateTime, LastUpdateTime, CreateUserId, LastUpdateUserId, State
+    </sql>
+
+    <insert id="insertProduct" parameterType="org.hkystyle.erp.domain.po.ProductPO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                Id,
+            </if>
+            Name, SellingUnit, SpecName, SellingPrice, CreateTime, CreateUserId, State
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            #{name,jdbcType=VARCHAR},
+            #{sellingUnit,jdbcType=VARCHAR},
+            #{specName,jdbcType=VARCHAR},
+            #{sellingPrice,jdbcType=DECIMAL},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{createUserId,jdbcType=INTEGER},
+            #{state,jdbcType=INTEGER}
+        </trim>
+    </insert>
+
+    <select id="listProduct" parameterType="org.hkystyle.erp.domain.models.product.dto.ListProductDTO"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM product
+        <where>
+            <if test="productName != null or productName != ''">
+                AND Name LIKE concat('%',#{productName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="state != null">
+                AND State = #{state,jdbcType=INTEGER}
+            </if>
+            <if test="state == null">
+                AND State = concat('1')
+            </if>
+        </where>
+        LIMIT #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+
+    <select id="listProductCount" parameterType="org.hkystyle.erp.domain.models.product.dto.ListProductDTO"
+            resultType="java.lang.Integer">
+        SELECT count(*) FROM product
+        <where>
+            <if test="productName != null or productName != ''">
+                AND Name LIKE concat('%',#{productName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="state != null">
+                AND State = #{state,jdbcType=INTEGER}
+            </if>
+            <if test="state == null">
+                AND State = 1
+            </if>
+        </where>
+    </select>
+
+    <update id="update" parameterType="org.hkystyle.erp.domain.po.ProductPO">
+        UPDATE product
+        <set>
+            <if test="name != null">
+                Name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sellingUnit != null">
+                SellingUnit = #{sellingUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="specName != null">
+                SpecName = #{specName,jdbcType=VARCHAR},
+            </if>
+            <if test="sellingPrice != null">
+                SellingPrice = #{sellingPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="state != null">
+                State = #{state,jdbcType=INTEGER},
+            </if>
+        </set>
+        WHERE ` Id` = #{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>
+

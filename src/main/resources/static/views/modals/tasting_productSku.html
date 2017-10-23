@@ -1,0 +1,108 @@
+<div class="modal-header" >
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">×</button>
+	<h3 class="modal-title" ng-bind="title"></h3>
+</div>
+<div class="modal-body">
+		<div class="row"  style="margin: 0px;">
+			<div class="portlet">
+				<div class="portlet-title" >
+				<div class="caption font-green-sharp">
+					<i class="icon-settings font-green-sharp"></i> <span
+						class="caption-subject bold uppercase">搜索</span> <span
+						class="caption-helper">输入信息搜索</span>
+				</div>
+			</div>
+			<div class="portlet-body" >
+					<form action="#" id="#" class="form-horizontal searchbox">
+						<div class="form-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-3 control-label">产品名称：</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" placeholder="请输入产品名称"
+												ng-model="vo.productName" />
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-3 control-label">销售模式：</label>
+									<div class="col-md-8">
+										<select class="form-control" data-ng-model="vo.saleMode" data-ng-options="item.value as item.key for  item in  saleModeList">
+										   <option value="">请选择</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+					<div class="form-actions">
+						<div class="row">
+							<div class="col-md-12" style="text-align: center;">
+								<button type="button" class="btn blue" ng-click="searchClick()">
+									<i class="fa fa-search"></i> 查询
+								</button>
+								<button class="btn default" type="button"
+									ng-click="resteExist()">
+									<i class="fa fa-eraser"></i> 清空
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="table">
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr class="heading">
+						<th>
+							<label>
+								<div class="checker"><span ng-class="{'checked':allCheck}"> <input  type="checkbox" ng-model="allCheck" ng-click="checkAll()" /></span></div>
+							</label>
+						</th>
+						<th>序号</th>
+						<th>产品规格名称</th>
+						<th>产品销售模式</th>
+						<th>指导价</th>
+						<th>状态</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in vm.items" class="odd gradeX "   >
+						<td>
+							<label>
+										<div class="checker"  >
+											<span ng-class="{'checked':item.flag}"  > <input
+												type="checkbox" ng-model="item.flag"  ng-click="updateSelection($event,item)"
+												ng-checked="isSelected(item.id)"  ng-disabled = "item.disabled" />
+											</span>
+										</div>
+								</label>
+							</td>
+						<td ng-bind="$index + 1 + (vm.pages.index-1) * vm.pages.itemsPerPage"></td>
+						<td ng-bind="item.name"></td>
+						<td ng-bind="item.saleMode"></td>
+						<td >
+							<span ng-hide="item.guidePrice==null || item.guidePriceUnit==null "  ng-bind="item.guidePrice+'/'+item.guidePriceUnit" ></span>
+						</td>
+						<td ng-bind="item.state"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<pagination boundary-links="true"
+			items-per-page="vm.pages.itemsPerPage"
+			total-items="vm.pages.totalResult" ng-model="vm.pages.index"
+			class="pagination-sm pull-right" previous-text="&lsaquo;"
+			next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+			ng-change="pageChange()"></pagination>
+		<h5>每页 {{vm.pages.itemsPerPage}}条 | 共 {{vm.pages.totalResult}}
+			条记录 | 当前第 {{vm.pages.index}} 页 | 共 {{vm.pages.totalPage}} 页</h5>
+			</div>
+			</div>
+		</div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="ok()"  >确定</button>
+	<button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+</div>
