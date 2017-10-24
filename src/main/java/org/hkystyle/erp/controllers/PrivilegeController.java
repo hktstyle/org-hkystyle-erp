@@ -3,7 +3,7 @@ package org.hkystyle.erp.controllers;
 import org.hkystyle.erp.domain.models.page.PageList;
 import org.hkystyle.erp.domain.models.privilege.PrivilegeIndexVO;
 import org.hkystyle.erp.results.BaseResult;
-import org.hkystyle.erp.results.PagesResult;
+import org.hkystyle.erp.results.DataResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,8 +47,8 @@ public class PrivilegeController {
         poList.setDataList(dataList);
 
 
-        PagesResult<PrivilegeIndexVO> privilegeIndexVOPagesResult = new PagesResult<>();
-        privilegeIndexVOPagesResult.setDatas(poList);
-        return privilegeIndexVOPagesResult;
+        DataResult<PrivilegeIndexVO> privilegeIndexVODataResult = new DataResult<>();
+        privilegeIndexVODataResult.setDatas(poList);
+        return privilegeIndexVODataResult;
     }
 }

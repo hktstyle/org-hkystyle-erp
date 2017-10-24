@@ -4,7 +4,7 @@
 
 <mapper namespace="org.hkystyle.erp.domain.dao.ProductPOMapper">
     <resultMap id="BaseResultMap" type="org.hkystyle.erp.domain.po.ProductPO">
-        <id column="'Id'" property="id" javaType="INTEGER"/>
+        <id column="Id" property="id" javaType="INTEGER"/>
         <result column="Name" property="name" jdbcType="VARCHAR"/>
         <result column="SellingUnit" property="sellingUnit" jdbcType="VARCHAR"/>
         <result column="SpecName" property="specName" jdbcType="VARCHAR"/>
@@ -17,7 +17,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        'Id', Name, SellingUnit, SpecName, SellingPrice, CreateTime, LastUpdateTime, CreateUserId, LastUpdateUserId, State
+        Id, Name, SellingUnit, SpecName, SellingPrice, CreateTime, LastUpdateTime, CreateUserId, LastUpdateUserId, State
     </sql>
 
     <insert id="insertProduct" parameterType="org.hkystyle.erp.domain.po.ProductPO" useGeneratedKeys="true" keyProperty="id">
@@ -48,32 +48,39 @@
         <include refid="Base_Column_List"/>
         FROM product
         <where>
-            <if test="productName != null or productName != ''">
+            <if test="productName != null and productName != ''">
                 AND Name LIKE concat('%',#{productName,jdbcType=VARCHAR},'%')
             </if>
             <if test="state != null">
                 AND State = #{state,jdbcType=INTEGER}
             </if>
-            <if test="state == null">
-                AND State = concat('1')
-            </if>
+            <!--<if test="state == null">-->
+                <!--AND State = 1-->
+            <!--</if>-->
         </where>
         LIMIT #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+
+    <select id="getProduct" parameterType="java.lang.Integer"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM product WHERE Id = #{id,jdbcType=INTEGER}
     </select>
 
     <select id="listProductCount" parameterType="org.hkystyle.erp.domain.models.product.dto.ListProductDTO"
             resultType="java.lang.Integer">
         SELECT count(*) FROM product
         <where>
-            <if test="productName != null or productName != ''">
+            <if test="productName != null and productName != ''">
                 AND Name LIKE concat('%',#{productName,jdbcType=VARCHAR},'%')
             </if>
             <if test="state != null">
                 AND State = #{state,jdbcType=INTEGER}
             </if>
-            <if test="state == null">
-                AND State = 1
-            </if>
+            <!--<if test="state == null">-->
+                <!--AND State = 1-->
+            <!--</if>-->
         </where>
     </select>
 
@@ -95,8 +102,14 @@
             <if test="state != null">
                 State = #{state,jdbcType=INTEGER},
             </if>
+            <if test="lastUpdateTime != null">
+                LastUpdateTime = #{lastUpdateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateUserId != null">
+                LastUpdateUserId = #{lastUpdateUserId,jdbcType=INTEGER},
+            </if>
         </set>
-        WHERE ` Id` = #{id,jdbcType=INTEGER}
+        WHERE Id = #{id,jdbcType=INTEGER}
     </update>
 
 </mapper>

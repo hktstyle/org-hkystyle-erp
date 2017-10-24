@@ -3,6 +3,7 @@ package org.hkystyle.erp.domain.converter.product;
 
 import org.hkystyle.erp.common.utils.DateUtil;
 import org.hkystyle.erp.domain.models.product.Product;
+import org.hkystyle.erp.domain.models.product.enums.ProductState;
 import org.hkystyle.erp.domain.po.ProductPO;
 
 /**
@@ -21,6 +22,9 @@ public class ProductPOConverter {
         product.setLastUpdateTime(DateUtil.formatDatetime(model.getLastUpdateTime()));
         product.setCreateUserId(model.getCreateUserId());
         product.setLastUpdateUserId(model.getLastUpdateUserId());
+        if (null != model.getState()) {
+            product.setStateName(ProductState.values()[model.getState()].name());
+        }
         return product;
     }
 

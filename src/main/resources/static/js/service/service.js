@@ -646,7 +646,7 @@ MetronicApp.service('getUserInfo',function(){
     };
     return {
     	userInfo:function(){
-    		user=getUserInfo('YJP_PARTNER_UserInfo');
+    		user=getUserInfo('HKY_ERP_USER');
     		if(user==undefined||user==''){
     			return null;
     		}

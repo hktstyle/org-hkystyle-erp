@@ -1,0 +1,78 @@
+<div>
+    <!-- BEGIN PAGE HEADER-->
+    <h3 class="page-title" data-ng-bind="$state.current.data.pageTitle"></h3>
+    <div data-ncy-breadcrumb></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="icon-equalizer font-green-sharp"></i> <span
+                        class="caption-subject bold uppercase">编辑产品</span>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form name="addForm" class="form-horizontal"
+                      novalidate="novalidate">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">小品会名称：<span class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" required name="tastingName"
+                                       class="form-control data-ng-pristine data-ng-untouched data-ng-valid"
+                                       placeholder="请输入小品会名称" data-ng-model="vo.partyName">
+                                <div class="error-messages ng-scope ng-active"
+                                     data-ng-messages="addForm.tastingName.$error"
+                                     data-ng-if="addForm.tastingName.$touched">
+                                    <div class="ng-scope" data-ng-message="required">小品会名称是必填项！</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-4">
+                                    <button class="btn blue" data-ng-click="tastingSubmit()"
+                                            data-ejp-no-more-submit data-ng-disabled="addForm.$invalid">
+                                        <i class="fa fa fa-check"></i> 保存
+                                    </button>
+                                    <a href="#/product_list.html" class="btn default"><i
+                                            class="fa fa-chevron-circle-left"></i> 返回</a>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PAGE CONTENT-->
+<script>
+    $("#beginDate").datetimepicker({
+        language: 'cn',
+        rtl: Metronic.isRTL(),
+        format: "yyyy-mm-dd hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 5,
+        pickerPosition: "bottom-left"
+    }).on("click", function (ev) {
+        $("#beginDate").datetimepicker("setEndDate", $("#endDate").val());
+    });
+    $("#endDate").datetimepicker({
+        language: 'cn',
+        rtl: Metronic.isRTL(),
+        format: "yyyy-mm-dd hh:ii",
+        autoclose: true,
+        minuteStep: 5,
+        todayBtn: true,
+        pickerPosition: "bottom-left"
+    }).on("click", function (ev) {
+        $("#endDate").datetimepicker("setStartDate", $("#beginDate").val());
+    });
+</script>
+
+
+</div>
+

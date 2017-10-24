@@ -10,15 +10,12 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * Created by hukaiyang on 2017/10/14.
  */
 
-@SpringBootApplication(scanBasePackages = "org.hkystyle.erp")
+@SpringBootApplication
 @MapperScan(basePackages = "org.hkystyle.erp.domain.dao")
 public class Application extends SpringBootServletInitializer {
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(this.getClass());
-    }
 }
+

@@ -14,6 +14,8 @@ public interface ProductPOMapper {
 
     List<ProductPO> listProduct(ListProductDTO search);
 
+    ProductPO getProduct(Integer productId);
+
     int listProductCount(ListProductDTO search);
 
     void update(ProductPO record);

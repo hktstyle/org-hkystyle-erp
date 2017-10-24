@@ -41,12 +41,35 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider',
                                             '../assets/global/plugins/angularjs/plugins/ui-select/selectize.default.css',
                                             '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
                                             '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
-                                            // '../assets/global/plugins/jquery.cityselect.js',
-                                            // '../assets/global/plugins/jquery.cityselect.init.js',
                                             '../assets/global/plugins/angularjs/angular-sanitize.js',
                                             'js/controllers/product/productController.js']
                                     }]);
                             }]
+                    }
+                })
+            .state('product_detail',
+                {
+                    url: "/product_detail/:id",
+                    templateUrl: "views/product/product_detail.html",
+                    controller: 'productDetailController',
+                    data: {
+                        pageTitle: '产品'
+                    },
+                    ncyBreadcrumb: {
+                        label: '产品',
+                        parent: 'product_list'
+                    },
+                    resolve: {
+                        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([{
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                                    '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
+                                    'js/controllers/product/productController.js']
+                            }]);
+                        }]
                     }
                 });
     }]);

@@ -38,6 +38,11 @@ public class Product implements Serializable {
     private Integer state;
 
     /**
+     * 状态名称
+     */
+    private String stateName;
+
+    /**
      * 创建时间
      */
     private String createTime;
@@ -189,5 +194,19 @@ public class Product implements Serializable {
      */
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    /**
+     * 获取 状态名称
+     */
+    public String getStateName() {
+        return this.stateName;
+    }
+
+    /**
+     * 设置 状态名称
+     */
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
     }
 }

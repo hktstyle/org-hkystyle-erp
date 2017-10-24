@@ -8,7 +8,7 @@
         <property name="dialect" value="mysql"/>
     </properties>
     <settings>
-        <setting name="logImpl" value="SLF4J" />
+        <setting name="logImpl" value="STDOUT_LOGGING" />
         <!-- 这个配置使全局的映射器启用或禁用缓存。系统默认值是true，设置只是为了展示出来 -->
         <setting name="cacheEnabled" value="true"/>
         <!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 系统默认值是true，设置只是为了展示出来 -->

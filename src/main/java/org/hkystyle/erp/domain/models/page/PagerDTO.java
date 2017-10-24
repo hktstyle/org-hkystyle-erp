@@ -1,5 +1,5 @@
 /**
- * Copyright © 2017 北京易酒批电子商务有限公司. All rights reserved.
+ * Copyright © 2017 hkystyle. All rights reserved.
  */
 package org.hkystyle.erp.domain.models.page;
 
@@ -31,7 +31,9 @@ public class PagerDTO implements Serializable {
      * 设置 当前页
      */
     public void setPageIndex(int pageIndex) {
-        this.pageIndex = pageIndex;
+        if (0 < this.pageIndex) {
+            this.pageIndex = pageIndex - 1;
+        }
     }
 
     /**

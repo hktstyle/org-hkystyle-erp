@@ -1,5 +1,5 @@
 /**
- * Copyright © 2017 北京易酒批电子商务有限公司. All rights reserved.
+ * Copyright © 2017 hkystyle. All rights reserved.
  */
 package org.hkystyle.erp.results;
 
@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by hukaiyang on 2017/10/14.
  */
-public class PagesResult<T extends Serializable> extends BaseResult {
+public class DataResult<T extends Serializable> extends BaseResult {
     private PageList<T> datas;
 
     public PageList<T> getDatas() {

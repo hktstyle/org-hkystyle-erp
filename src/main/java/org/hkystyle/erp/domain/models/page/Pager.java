@@ -10,6 +10,8 @@ public class Pager extends PagerCondition {
     private Integer totalPage;
 
     public Pager() {
+        this.recordCount = 0;
+        this.totalPage = 0;
     }
 
     public Pager(Integer currentPage, Integer pageSize, Integer recordCount) {

@@ -59,10 +59,16 @@ public class ProductServiceTest {
     @Test
     public void testlistProduct() {
         final ListProductDTO productDTO = new ListProductDTO();
-        productDTO.setProductName("");
-        productDTO.setState(1);
+        productDTO.setProductName(null);
+        productDTO.setState(null);
         final PageList<Product> pageList = productService.listProduct(productDTO);
         System.out.println(JSON.toJSONString(pageList));
+    }
+
+    @Test
+    public void testgetProduct() {
+        final Product product = productService.getProduct(1);
+        System.out.println(JSON.toJSONString(product));
     }
 
     @Test

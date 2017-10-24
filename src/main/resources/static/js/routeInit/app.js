@@ -210,12 +210,16 @@ MetronicApp.controller('SidebarController', [
         //     }
         // }
 
+        // HKY_ERP_USER
+        $scope.userInfo = {};
+        $scope.userInfo.userRole = "Admin";
+        $scope.userInfo.userId = 1;
+        document.cookie = 'HKY_ERP_USER' + "=" + JSON.stringify($scope.userInfo);
 
         $scope.getSidebarList = function () {
             $http.post('templates/findUserPrivilegeList').success(
                 function (data) {
                     $scope.sidebarList = data.datas.dataList;
-                    console.log(data);
                 }).error(function () {
                 console.log("error");
             })
